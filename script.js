@@ -4,27 +4,38 @@ const errorMsg1 = form =>{
   document.getElementById("error-msg1").style.display = form;
 }
 
+// spinner
+const spinner = form => {
+  document.getElementById("spinner").style.display = form;
+}
+
 errorMsg1("none");
+spinner("none")
 
 
 const findPhone = () => {
+
   const inputField = document.getElementById("input-field").value.toLowerCase();
   const phone = inputField;
+  spinner("block")
   if(document.getElementById("input-field").value === ""){
     errorMsg1("block");
   }
-  const url = `https://openapi.programming-hero.com/api/phones?search=${phone}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => showPhones(data.data));
-};
+    // spinner
+  else{
+    const url = `https://openapi.programming-hero.com/api/phones?search=${phone}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => showPhones(data.data));
+  }
 
+};
 const showPhones = phones => {
 
   // clearing Text
   const detailsContainer = document.getElementById("display-section");
   detailsContainer.textContent = "";
-  const detailsAreaContainer = document.getElementById("details-area-container").textContent="";
+  document.getElementById("details-area-container").textContent="";
 
   if(phones == false){
     errorMsg1("block");
@@ -36,13 +47,14 @@ const showPhones = phones => {
       div.classList.add("card");
       div.innerHTML = `
       <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
-    <div class="card-body">
+      <div class="card-body">
       <h5 class="card-title">${phone.phone_name}</h5>
       <p class="card-text">Brand: ${phone.brand}</p>
       <button onClick="showDetails('${phone.slug}')" class="btn btn-success">Details</button>
       `;
       detailsContainer.appendChild(div);
       errorMsg1("none");
+      spinner("none")
     });
   }
 

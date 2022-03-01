@@ -15,15 +15,21 @@ spinner("none");
 
 
 const findPhone = () => {
-
   const inputField = document.getElementById("input-field").value.toLowerCase();
   const phone = inputField;
-  spinner("block")
+  
   if(document.getElementById("input-field").value === ""){
     errorMsg1("block");
+    document.getElementById("display-section").textContent="";
+    document.getElementById("details-area-container").textContent="";
+
   }
-    // spinner
+
   else{
+    // clearing input field
+    document.getElementById("input-field").value = "";
+    spinner("block")
+
     const url = `https://openapi.programming-hero.com/api/phones?search=${phone}`;
     fetch(url)
       .then((res) => res.json())
@@ -40,6 +46,7 @@ const showPhones = phones => {
 
   if(phones == false){
     errorMsg1("block");
+    spinner("none");
   } 
   else{
     phones.slice(0, 20).forEach(phone => {
@@ -51,7 +58,7 @@ const showPhones = phones => {
       <div class="card-body">
       <h5 class="card-title">${phone.phone_name}</h5>
       <p class="card-text">Brand: ${phone.brand}</p>
-      <button onClick="showDetails('${phone.slug}')" class="btn btn-success">Details</button>
+      <button onClick="showDetails('${phone.slug}')" class="btn btn-dark px-4">Details</button>
       `;
       detailsContainer.appendChild(div);
       errorMsg1("none");
@@ -102,8 +109,9 @@ const showSpec = (phone) => {
   <ul id="sensor-list" class="p-0">
 
   </ul>
-
+  <button onClick="closeBtn()" class="btn btn-dark px-3">Close This Tab</button>
   </div>
+
     `;
     detailsAreaContainer.appendChild(div);
 
@@ -119,3 +127,8 @@ const showSpec = (phone) => {
     ulList.appendChild(li)
     })
 };
+
+// close button
+const closeBtn = () => {
+  document.getElementById("details-area-container").textContent="";;
+}

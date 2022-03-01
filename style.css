@@ -4,6 +4,7 @@
     gap: 50px;
 }
 
+/* card design */
 .card, .row {
     padding: 20px;
     border-radius: 10px;
@@ -27,7 +28,22 @@ ul li {
     list-style-type: none;
 }
 
+/* hover effect */
+
 .card:hover{
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
+
+/* responsiveness */
+
+/* phone */
+@media only screen and (max-width: 768px) {
+    #display-section{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .row{
+        flex-direction: column;
+    }
+
+  }
 

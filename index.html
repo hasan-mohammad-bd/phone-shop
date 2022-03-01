@@ -12,12 +12,37 @@
       crossorigin="anonymous"
     />
 
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+
     <title>Phone Bazar</title>
   </head>
   <body>
-    <header><h3>Phone Bazar</h3></header>
-    <div id="search-area"></div>
-    <section id="display-section"></section>
+    <div class="container">
+      <header>
+        <h1 class="text-center my-5 fw-bold text-success">Phone Bazar</h1>
+      </header>
+      <div id="search-area" class=""></div>
+      <div class="input-group mb-3 w-75 mx-auto">
+        <input
+          id="input-field"
+          type="text"
+          class="form-control py-3"
+          placeholder="Search phone here"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+        />
+        <button
+          onclick="findPhone()"
+          class="btn btn-outline-secondary bg-success text-light"
+          type="button"
+          id="search button"
+        >
+          Search
+        </button>
+      </div>
+      <section id="display-section"></section>
+    </div>
     <!-- javaScript file -->
     <script src="./script.js"></script>
 

@@ -7,16 +7,26 @@
 .card, .row {
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 10px 10px 10px rgba(129, 129, 129, 0.123);
+    box-shadow: -10px 10px 10px rgba(129, 129, 129, 0.123);
     border: 0;
+    margin: 10px;
+    transition: transform 0.4s ease-in;
 }
 
 .row img {
     
-    width: 60%;
+    width: 70%;
     margin: auto auto;
 }
 
 .row{
     padding: 30px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.card:hover{
+    transform: scale(1.04);
 }

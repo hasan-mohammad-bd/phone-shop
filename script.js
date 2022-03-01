@@ -1,6 +1,16 @@
+
+// error message function
+const errorMsg1 = form =>{
+  document.getElementById("error-msg1").style.display = form;
+}
+errorMsg1("none");
+
 const findPhone = () => {
-  const inputField = document.getElementById("input-field").value;
+  const inputField = document.getElementById("input-field").value.toLowerCase();
   const phone = inputField;
+  if(document.getElementById("input-field").value === ""){
+    errorMsg1("block");
+  }
   const url = `https://openapi.programming-hero.com/api/phones?search=${phone}`;
   fetch(url)
     .then((res) => res.json())
@@ -8,8 +18,12 @@ const findPhone = () => {
 };
 
 const showPhones = (phones) => {
-  // console.log(phones);
+
+  // clearing Text
   const detailsContainer = document.getElementById("display-section");
+  detailsContainer.textContent = "";
+  const detailsAreaContainer = document.getElementById("details-area-container").textContent="";
+
   phones.slice(0, 20).forEach((phone) => {
     console.log(phone);
     const div = document.createElement("div");
@@ -22,6 +36,7 @@ const showPhones = (phones) => {
     <button onClick="showDetails('${phone.slug}')" class="btn btn-success">Details</button>
     `;
     detailsContainer.appendChild(div);
+    errorMsg1("none");
   });
 };
 
@@ -37,33 +52,48 @@ const showSpec = (phone) => {
   const detailsAreaContainer = document.getElementById(
     "details-area-container"
   );
+  detailsAreaContainer.textContent = "";
   const div = document.createElement("div");
   div.classList.add("row");
 
   div.innerHTML = `
-    <div class="col text-center">
+    <div class="col text-center p-5 card">
     <img src="${phone.image}" alt="">
-    <h4 class="py-3">${phone.name}</h4>
+    <h4 class="py-3 text-success fw-bolder">${phone.name}</h4>
     <p class="py-2">${phone.releaseDate ? phone.releaseDate :"Release date is not available"}</p>
     
   </div>
-  <div class="col card">
-    <h5 class="fw-bolder">Main Features</h5>
+  <div class="col card p-5">
+    <h5 class="fw-bolder text-success">Main Features</h5>
     <p><span class="fw-bold">Chip Set:</span> ${phone.mainFeatures.chipSet}</p>
     <p><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize}</p>
     <p><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory}</p>
-    <h5 class="fw-bolder">Others</h5>
-    <p><span class="fw-bold py-1">Bluetooth:</span> ${phone.others.Bluetooth}</p>
-    <p><span class="fw-bold py-1">GPS:</span> ${phone.others.GPS}</p>
-    <p><span class="fw-bold py-1">NFC:</span> ${phone.others.NFC}</p>
-    <p><span class="fw-bold py-1">Radio:</span> ${phone.others.Radio}</p>
-    <p><span class="fw-bold py-1">USB:</span> ${phone.others.USB}</p>
+    <h5 class="fw-bolder pt-4 text-success">Others</h5>
+    <p><span class="fw-bold py-1">Bluetooth:</span> ${phone.others?.Bluetooth ? phone.others.Bluetooth:"Data is not available"}</p>
+    <p><span class="fw-bold py-1">GPS:</span> ${phone.others?.GPS ? phone.others.GPS:"Data is not available" }</p>
+    <p><span class="fw-bold py-1">NFC:</span> ${phone.others?.NFC ? phone.others.NFC:"Data is not available"}</p>
+    <p><span class="fw-bold py-1">Radio:</span> ${phone.others?.Radio ? phone.others.Radio:"Data is not available"}</p>
+    <p><span class="fw-bold py-1">USB:</span> ${phone.others?.USB ? phone.others.USB:"Data is not available"}</p>
   </div>
-  <div class="col">
-  <h5 class="fw-bolder">Sensors</h5>
+  <div class="col card p-5">
+  <h5 class="fw-bolder text-success">Sensors</h5>
+  <ul id="sensor-list" class="p-0">
+
+  </ul>
 
   </div>
     `;
-
     detailsAreaContainer.appendChild(div);
+
+  const ulList = document.getElementById("sensor-list");
+  ulList.textContent =""
+  phone.mainFeatures.sensors.forEach(sensor => {
+
+      const li = document.createElement("li");
+      const p = document.createElement("p");
+      li.appendChild(p);
+      p.innerText = sensor;
+
+    ulList.appendChild(li)
+    })
 };

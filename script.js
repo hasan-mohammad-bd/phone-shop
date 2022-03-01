@@ -52,7 +52,6 @@ const showPhones = phones => {
   } 
   else{
     phones.slice(0, 20).forEach(phone => {
-      console.log(phone);
       const div = document.createElement("div");
       div.classList.add("card");
       div.innerHTML = `
@@ -79,7 +78,6 @@ const showDetails = (id) => {
 };
 
 const showSpec = (phone) => {
-    console.log(phone);
   const detailsAreaContainer = document.getElementById(
     "details-area-container"
   );

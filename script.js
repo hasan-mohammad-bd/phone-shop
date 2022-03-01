@@ -3,7 +3,9 @@
 const errorMsg1 = form =>{
   document.getElementById("error-msg1").style.display = form;
 }
+
 errorMsg1("none");
+
 
 const findPhone = () => {
   const inputField = document.getElementById("input-field").value.toLowerCase();
@@ -17,27 +19,34 @@ const findPhone = () => {
     .then((data) => showPhones(data.data));
 };
 
-const showPhones = (phones) => {
+const showPhones = phones => {
 
   // clearing Text
   const detailsContainer = document.getElementById("display-section");
   detailsContainer.textContent = "";
   const detailsAreaContainer = document.getElementById("details-area-container").textContent="";
 
-  phones.slice(0, 20).forEach((phone) => {
-    console.log(phone);
-    const div = document.createElement("div");
-    div.classList.add("card");
-    div.innerHTML = `
-    <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${phone.phone_name}</h5>
-    <p class="card-text">Brand: ${phone.brand}</p>
-    <button onClick="showDetails('${phone.slug}')" class="btn btn-success">Details</button>
-    `;
-    detailsContainer.appendChild(div);
-    errorMsg1("none");
-  });
+  if(phones == false){
+    errorMsg1("block");
+  } 
+  else{
+    phones.slice(0, 20).forEach(phone => {
+      console.log(phone);
+      const div = document.createElement("div");
+      div.classList.add("card");
+      div.innerHTML = `
+      <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${phone.phone_name}</h5>
+      <p class="card-text">Brand: ${phone.brand}</p>
+      <button onClick="showDetails('${phone.slug}')" class="btn btn-success">Details</button>
+      `;
+      detailsContainer.appendChild(div);
+      errorMsg1("none");
+    });
+  }
+
+
 };
 
 const showDetails = (id) => {

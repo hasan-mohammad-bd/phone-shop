@@ -4,7 +4,7 @@ const errorMsg1 = form =>{
   document.getElementById("error-msg1").style.display = form;
 }
 
-// spinner
+// spinner function
 const spinner = form => {
   document.getElementById("spinner").style.display = form;
 }
@@ -18,6 +18,7 @@ const findPhone = () => {
   const inputField = document.getElementById("input-field").value.toLowerCase();
   const phone = inputField;
   
+  //error handling
   if(document.getElementById("input-field").value === ""){
     errorMsg1("block");
     document.getElementById("display-section").textContent="";
@@ -44,6 +45,7 @@ const showPhones = phones => {
   detailsContainer.textContent = "";
   document.getElementById("details-area-container").textContent="";
 
+  //error handling
   if(phones == false){
     errorMsg1("block");
     spinner("none");

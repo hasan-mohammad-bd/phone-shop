@@ -1,0 +1,12 @@
+#display-section {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 50px;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(129, 129, 129, 0.123);
+    border: 0;
+}

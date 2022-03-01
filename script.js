@@ -10,7 +10,8 @@ const spinner = form => {
 }
 
 errorMsg1("none");
-spinner("none")
+spinner("none");
+
 
 
 const findPhone = () => {

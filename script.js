@@ -94,6 +94,7 @@ const showSpec = (phone) => {
     
   </div>
   <div class="col card p-5">
+    <h5 class="fw-bolder pt-4 text-success">Main Features</h5>
     <p><span class="fw-bold">Chip Set:</span> ${phone.mainFeatures.chipSet}</p>
     <p><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize}</p>
     <p><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory}</p>

@@ -152,7 +152,7 @@ const closeBtn = () => {
   document.getElementById("details-area-container").textContent="";
 }
 
-//show more button
+//show more button function
 const seeMore = () =>{
   document.getElementById("hiding").textContent="";
   const hidingCard = document.querySelectorAll("#display-section .card:nth-child(1n + 21)");

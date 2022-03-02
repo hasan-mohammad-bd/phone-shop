@@ -59,11 +59,12 @@ const showPhones = phones => {
       <div class="card-body">
       <h5 class="card-title">${phone.phone_name}</h5>
       <p class="card-text">Brand: ${phone.brand}</p>
-      <button onClick="showDetails('${phone.slug}')" class="btn btn-dark px-4">Details</button>
+      <button onClick="showDetails('${phone.slug}')" class="btn btn-dark px-1"><a id="up-btn" class="btn btn-dark px-4" href="#details-area-container">Details</a></button>
       `;
       detailsContainer.appendChild(div);
       errorMsg1("none");
-      spinner("none")
+      spinner("none");
+      
     });
   }
 
@@ -93,7 +94,6 @@ const showSpec = (phone) => {
     
   </div>
   <div class="col card p-5">
-    <h5 class="fw-bolder text-success">Main Features</h5>
     <p><span class="fw-bold">Chip Set:</span> ${phone.mainFeatures.chipSet}</p>
     <p><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize}</p>
     <p><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory}</p>
@@ -132,3 +132,4 @@ const showSpec = (phone) => {
 const closeBtn = () => {
   document.getElementById("details-area-container").textContent="";;
 }
+

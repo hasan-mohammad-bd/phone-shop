@@ -1,4 +1,5 @@
 
+
 // error message function
 const errorMsg1 = form =>{
   document.getElementById("error-msg1").style.display = form;
@@ -44,6 +45,7 @@ const showPhones = phones => {
   const detailsContainer = document.getElementById("display-section");
   detailsContainer.textContent = "";
   document.getElementById("details-area-container").textContent="";
+  document.getElementById("hiding").textContent="";
 
   //error handling
   if(phones == false){
@@ -51,7 +53,7 @@ const showPhones = phones => {
     spinner("none");
   } 
   else{
-    phones.slice(0, 20).forEach(phone => {
+    phones.forEach(phone => {
       const div = document.createElement("div");
       div.classList.add("card");
       div.innerHTML = `
@@ -64,12 +66,28 @@ const showPhones = phones => {
       detailsContainer.appendChild(div);
       errorMsg1("none");
       spinner("none");
-      
+
+      // hiding card
+      const hidingCard = document.querySelectorAll("#display-section .card:nth-child(1n + 21)")
+      hidingCard.forEach(card =>{
+      card.style.display = "none"
+    })
+     
     });
+
+    //adding see more button
+    const div2 = document.createElement("div");
+    div2.classList.add("see-more");
+    div2.innerHTML = `
+    <button id="see-more-btn" onClick="seeMore()" class="btn mb-5 mt-4 btn-dark px-4 d-flex justify-content-center">Show More</button>
+    `;
+    document.getElementById("hiding").appendChild(div2);
   }
 
 
 };
+
+
 
 const showDetails = (id) => {
   const url = `https://openapi.programming-hero.com/api/phone/${id}`;
@@ -131,6 +149,16 @@ const showSpec = (phone) => {
 
 // close button
 const closeBtn = () => {
-  document.getElementById("details-area-container").textContent="";;
+  document.getElementById("details-area-container").textContent="";
+}
+
+//show more button
+const seeMore = () =>{
+  document.getElementById("hiding").textContent="";
+  const hidingCard = document.querySelectorAll("#display-section .card:nth-child(1n + 21)");
+  hidingCard.forEach(card =>{
+  card.style.display = "block";
+  
+})
 }
 

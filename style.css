@@ -34,6 +34,11 @@ ul li {
     transform: scale(1.02);
 }
 
+
+.see-more {
+    display: flex;
+    justify-content: center;
+}
 /* responsiveness */
 
 /* phone */
@@ -46,4 +51,5 @@ ul li {
     }
 
   }
+
 

@@ -93,7 +93,7 @@ const showSpec = (phone) => {
     <p class="py-2">${phone.releaseDate ? phone.releaseDate :"Release date is not available"}</p>
     
   </div>
-  <div class="col card p-5">
+  <div class="col card p-4">
     <h5 class="fw-bolder pt-4 text-success">Main Features</h5>
     <p><span class="fw-bold">Chip Set:</span> ${phone.mainFeatures.chipSet}</p>
     <p><span class="fw-bold">Display Size:</span> ${phone.mainFeatures.displaySize}</p>
@@ -105,7 +105,7 @@ const showSpec = (phone) => {
     <p><span class="fw-bold py-1">Radio:</span> ${phone.others?.Radio ? phone.others.Radio:"Data is not available"}</p>
     <p><span class="fw-bold py-1">USB:</span> ${phone.others?.USB ? phone.others.USB:"Data is not available"}</p>
   </div>
-  <div class="col card p-5">
+  <div class="col card p-4">
   <h5 class="fw-bolder text-success">Sensors</h5>
   <ul id="sensor-list" class="p-0">
 

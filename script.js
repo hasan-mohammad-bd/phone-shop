@@ -106,7 +106,7 @@ const showSpec = (phone) => {
     <p><span class="fw-bold py-1">USB:</span> ${phone.others?.USB ? phone.others.USB:"Data is not available"}</p>
   </div>
   <div class="col card p-4">
-  <h5 class="fw-bolder text-success">Sensors</h5>
+  <h5 class="fw-bolder text-success pt-4">Sensors</h5>
   <ul id="sensor-list" class="p-0">
 
   </ul>
